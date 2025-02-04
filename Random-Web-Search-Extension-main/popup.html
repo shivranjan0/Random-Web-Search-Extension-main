@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Random Search</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 369px;
+      padding: 30px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin-top: 30px;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #444;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #e3e6e8;
+      border-radius: 8px; /* Slight rounding for a modern look */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-options,
+    .custom-options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .search-option,
+    .custom-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 6px; /* Slight rounding for modern design */
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .search-option:hover,
+    .custom-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-option input {
+      margin-right: 10px;
+      transform: scale(1.2);
+      accent-color: #4CAF50;
+    }
+
+    .search-option label,
+    .custom-option label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 8px;
+      color: #666;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 6px; /* Slight rounding */
+      font-size: 16px;
+      outline: none;
+      text-align: center;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      border-color: #4CAF50;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px; /* Slight rounding */
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    #startSearch {
+      background: linear-gradient(135deg, #32b37e, #28a745);
+    }
+
+    #startSearch:hover {
+      background: linear-gradient(135deg, #28a745, #32b37e);
+      box-shadow: 0 10px 20px rgba(0, 128, 0, 0.2);
+    }
+
+    #stopSearch {
+      background: linear-gradient(135deg, #f85032, #e73827);
+    }
+
+    #stopSearch:hover {
+      background: linear-gradient(135deg, #e73827, #f85032);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+    }
+
+    #searchCount {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #555;
+      font-size: 18px;
+    }
+
+    /* Extra responsiveness for small screens */
+    @media (max-width: 400px) {
+      body {
+        padding: 15px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      .search-options,
+      .custom-options {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Random Search</h2>
+
+  <div class="container">
+    <div class="search-options">
+      <div class="search-option">
+        <input type="checkbox" id="googleSearch" checked>
+        <label for="googleSearch">Google</label>
+      </div>
+      <div class="search-option">
+        <input type="checkbox" id="bingSearch" checked>
+        <label for="bingSearch">Bing</label>
+      </div>
+    </div>
+
+    <div class="custom-options">
+      <div class="custom-option">
+        <label for="maxSearches">Max Searches</label>
+        <input type="number" id="maxSearches" min="1" value="30">
+      </div>
+      <div class="custom-option">
+        <label for="searchInterval">Interval (sec)</label>
+        <input type="number" id="searchInterval" min="1" value="8">
+      </div>
+    </div>
+
+    <button id="startSearch">Start Searching</button>
+    <button id="stopSearch">Stop Searching</button>
+    <p id="searchCount">Searches: 0 / 30</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
